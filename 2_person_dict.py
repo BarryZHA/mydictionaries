@@ -11,7 +11,7 @@ print(person)
 # print out the name of the second child 
 print(person["children"][1])
 # print out the name of the cat 
-print(person["pets"])
+print(person("pets"["cat"]))
 # iterate through all children and print out each child 
 
 
