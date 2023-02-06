@@ -1,6 +1,8 @@
 '''
-We have a dictionary of produce with their per unit cost, the number of units sold and the total. We want to verify that the total is accurate
-since it was manually entered. Print out the details of any produce that has in inaccurate total. Print both the stated total from the dictionary
+We have a dictionary of produce with their per unit cost, the number of units sold and the total. We want to verify 
+that the total is accurate
+since it was manually entered. Print out the details of any produce that has in inaccurate total. 
+Print both the stated total from the dictionary
 as well as the calculated total that shows the discrepancy.
 '''
 
@@ -48,7 +50,7 @@ ProduceDictionary={
     'Celery': {
         'cost': 3.07,
         'amt_sold': 18.5,
-        'total': 56.8
+        'total': 56.79
     },
     'Spinach': {
         'cost': 4.12,
@@ -193,7 +195,7 @@ ProduceDictionary={
     'Brussels sprouts': {
         'cost': 1.65,
         'amt_sold': 22.9,
-        'total': 37.79
+        'total': 37.78
     },
     'Kale': {
         'cost': 5.02,
@@ -207,3 +209,13 @@ ProduceDictionary={
     }
 }
 
+for product in ProduceDictionary: 
+    calculated_total = ProduceDictionary[product]['cost'] * ProduceDictionary[product]['amt_sold']
+    calculated_total = round(calculated_total,2)
+    state_total = ProduceDictionary[product]['total']
+    if calculated_total != state_total: 
+        print(f'Produce Name: {product}') 
+        print(f'Calculated Total: ${calculated_total:,.2f} ')
+        print(f'Stated Total: ${state_total:,.2f} ')
+        print()
+    
