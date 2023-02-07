@@ -50,16 +50,14 @@ print()
 #   dictionary, name it 'eq_dict'. We are only interested in earthquakes that have a 
 #   magnitude > 6. Print out the new dictionary.
 eq_dict = {}
-# i is list number 
-i = 0 
-for eq in earthquake_data["features"]:
-   if earthquake_data["features"][i]["properties"]["mag"] > 6: 
-       location = earthquake_data["features"][i]["properties"]["place"]
-       magnitude = earthquake_data['features'][i]["properties"]["mag"]
-       longitude = earthquake_data['features'][i]["geometry"]["coordinates"][0]
-       latitude = earthquake_data['features'][i]["geometry"]["coordinates"][1]
-       eq_dict[i] = {"location":location, "magnitude":magnitude, "longitude":longitude, "latitude":latitude}
-   i += 1 
+
+for eq in range(len(earthquake_data["features"])):
+   if earthquake_data["features"][eq]["properties"]["mag"] > 6: 
+       location = earthquake_data["features"][eq]["properties"]["place"]
+       magnitude = earthquake_data['features'][eq]["properties"]["mag"]
+       longitude = earthquake_data['features'][eq]["geometry"]["coordinates"][0]
+       latitude = earthquake_data['features'][eq]["geometry"]["coordinates"][1]
+       eq_dict[eq] = {"location":location, "magnitude":magnitude, "longitude":longitude, "latitude":latitude}
 print(eq_dict)
 print()
 #3) using the eq_dict dictionary, print out the information as shown below
