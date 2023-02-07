@@ -32,6 +32,41 @@ Latitude: 14.7628
 
 '''
 
-
-
+# extract dictionary from json
 import json
+
+infile = open('eq_data.json','r')
+earthquake_data = json.load(infile)
+
+#1) print out the number of earthquakes
+eq_count = 0 
+
+for earthquakes in earthquake_data['features']: 
+    eq_count += 1 
+print ("The number of earthquakes is: ", eq_count)
+print()
+#2) iterate through the dictionary and extract the location, magnitude, 
+#   longitude and latitude of the location and put it in a new
+#   dictionary, name it 'eq_dict'. We are only interested in earthquakes that have a 
+#   magnitude > 6. Print out the new dictionary.
+eq_dict = {}
+# i is list number 
+i = 0 
+for eq in earthquake_data["features"]:
+   if earthquake_data["features"][i]["properties"]["mag"] > 6: 
+       location = earthquake_data["features"][i]["properties"]["place"]
+       magnitude = earthquake_data['features'][i]["properties"]["mag"]
+       longitude = earthquake_data['features'][i]["geometry"]["coordinates"][0]
+       latitude = earthquake_data['features'][i]["geometry"]["coordinates"][1]
+       eq_dict[i] = {"location":location, "magnitude":magnitude, "longitude":longitude, "latitude":latitude}
+   i += 1 
+print(eq_dict)
+print()
+#3) using the eq_dict dictionary, print out the information as shown below
+for eq in eq_dict:
+    print("Location: ",eq_dict[eq]["location"])
+    print("Magnitude: ",eq_dict[eq]["magnitude"])
+    print("Longitude: ",eq_dict[eq]["longitude"])
+    print("Latitude: ",eq_dict[eq]["latitude"])
+    print()
+    print()
