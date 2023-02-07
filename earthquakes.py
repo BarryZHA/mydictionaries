@@ -39,11 +39,7 @@ infile = open('eq_data.json','r')
 earthquake_data = json.load(infile)
 
 #1) print out the number of earthquakes
-eq_count = 0 
-
-for earthquakes in earthquake_data['features']: 
-    eq_count += 1 
-print ("The number of earthquakes is: ", eq_count)
+print ("The number of earthquakes is: ", len(earthquake_data["features"]))
 print()
 #2) iterate through the dictionary and extract the location, magnitude, 
 #   longitude and latitude of the location and put it in a new
